@@ -1,18 +1,22 @@
 public class BankAccount{
-	private double userMoney;
+	private double balance;
 	public BankAccount(double money){
-		userMoney = money;
+		balance = money;
 	}
 	public void debit(double money){
-		if(userMoney<money)
+		if(balance<money)
 			System.out.printf("substracting %f from account2 balance Debit amount exceeded account banlance\n", money);
 		else
-			userMoney=userMoney - money;
+			balance=balance - money;
 	}
 	public void credit(double money){
-		userMoney=userMoney+money;
+		balance=balance+money;
 	}
-	public double balance(){
-		return userMoney;
+	
+	public double getBalance(){
+		return balance;
+	}
+	protected void setBalance(double money){
+		balance = money;
 	}
 }
