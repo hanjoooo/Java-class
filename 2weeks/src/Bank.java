@@ -32,7 +32,6 @@ public class Bank {
 		account2.passTime(6);
 		System.out.println("6 Month later!");
 
-		
 		System.out.printf("account2 balance : %.2f\n",account2.getBalance());
 		System.out.printf("account2 현재 출금가능액 : %.2f\n",account2.getWithdrawableAccount());
 		account2.passTime(6);
