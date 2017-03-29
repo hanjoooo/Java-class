@@ -1,29 +1,50 @@
 import java.util.Scanner;
 public class Bank {
 	public static void main(String[] args){
-		CheckingAccount account1=new CheckingAccount(100.00);
-		CheckingAccount account2=new CheckingAccount(100.00);
+		BankAccount account1=new CheckingAccount(100,50,0.01,0.07);
+		BankAccount account2=new SavingAccount(100,0.05);
 		Scanner s= new Scanner(System.in);
-
-		System.out.printf("account1 balance : %f\n",account1.getBalance());
-		System.out.printf("account2 balance : %f\n",account2.getBalance());
+		double amount;
 		
-		System.out.print("Enter deposit amount for account1 : ");
-		double money1 = s.nextDouble();
-		account1.credit(money1);
-		System.out.printf("account1 balance : %f\n",account1.getBalance());
-		System.out.printf("account2 balance : %f\n",account2.getBalance());
+		System.out.printf("account1 balance : %.2f\n",account1.getBalance());
+		System.out.printf("account1 현재 출금가능액 : %.2f\n",account1.getWithdrawableAccount());
+		System.out.print("Enter withdrawal amount for account1 : ");
+		amount = s.nextDouble();
+		account1.debit(amount);
 		
-		System.out.print("Enter withdrawal amount for account2 : ");
-		double money2 = s.nextDouble();
-		account2.debit(money2);
-		System.out.printf("account1 balance : %f\n",account1.getBalance());
-		System.out.printf("account2 balance : %f\n",account2.getBalance());
+		System.out.printf("account1 balance : %.2f\n",account1.getBalance());
+		System.out.printf("account1 현재 출금가능액 : %.2f\n",account1.getWithdrawableAccount());	
+		account1.passTime(1);
 		
-		System.out.println("next month!");
-		account1.nextMonth();
-		account2.nextMonth();
-		System.out.printf("account1 balance : %f\n",account1.getBalance());
-		System.out.printf("account2 balance : %f\n",account2.getBalance());
+		System.out.printf("account1 balance : %.2f\n",account1.getBalance());
+		System.out.printf("account1 현재 출금가능액 : %.2f\n",account1.getWithdrawableAccount());
+		account1.passTime(5);
+		
+		System.out.printf("account1 balance : %.2f\n",account1.getBalance());
+		System.out.printf("account1 현재 출금가능액 : %.2f\n",account1.getWithdrawableAccount());
+		System.out.println("account1 went Bankrupt!");
+		
+		System.out.printf("account2 balance : %.2f\n",account2.getBalance());
+		System.out.printf("account2 현재 출금가능액 : %.2f\n",account2.getWithdrawableAccount());
+		System.out.println("6 Month later!");
+		account2.passTime(6);
+		
+		System.out.printf("account2 balance : %.2f\n",account2.getBalance());
+		System.out.printf("account2 현재 출금가능액 : %.2f\n",account2.getWithdrawableAccount());
+		System.out.println("6 Month later!");
+		account2.debit(50);
+		account2.passTime(6);
+		
+		System.out.printf("account2 balance : %.2f\n",account2.getBalance());
+		System.out.printf("account2 현재 출금가능액 : %.2f\n",account2.getWithdrawableAccount());
+		
+		
+		account2.passTime(1);
+		System.out.println("next 1 Month later!");
+		account2.debit(50);
+		System.out.println("50달러 인출!!");
+		System.out.printf("account2 balance : %.2f\n",account2.getBalance());
+		System.out.printf("account2 현재 출금가능액 : %.2f\n",account2.getWithdrawableAccount());
+		
 	}
 }
