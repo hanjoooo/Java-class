@@ -1,4 +1,4 @@
-public class CheckingAccount extends BankAccount {
+public class CheckingAccount extends BankAccount implements Valuable {
 	private double creditLimit;
 	private double interest;
 	private double loanInterest;	
@@ -15,7 +15,7 @@ public class CheckingAccount extends BankAccount {
 		else if(getBalance()<0)
 			setBalance(getBalance()*loanInterest*time+getBalance());
 	}
-	@Override public double getWithdrawableAccount(){
+	@Override public double getWithdrawableAmount(){
 		if(getBalance()+creditLimit<0)
 			return 0;
 		else	
@@ -23,10 +23,18 @@ public class CheckingAccount extends BankAccount {
 	}
 	public CheckingAccount(double money, double limit, double inst, double loaninst) {
 		super(money);
-		setBalance(money);
 		creditLimit=limit;
 		interest=inst;
 		loanInterest=loaninst;
 		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public double EstimateValue(int month) {
+		// TODO Auto-generated method stub
+		passTime(month);
+		return getBalance();
+	}
+	public String toString(){
+		return String.format("CheckingAccount_Balance : %.2f",getBalance());
 	}
 }

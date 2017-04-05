@@ -1,15 +1,14 @@
-public class SavingAccount extends BankAccount{
+public class SavingAccount extends BankAccount implements Valuable{
 	
 	private double interestMonth;
 	private int accountTime;
 
 	public SavingAccount(double money, double interest){
 		super(money);
-		setBalance(money);
 		interestMonth = interest;
 		accountTime=0;
 	}
-	@Override public double getWithdrawableAccount(){
+	@Override public double getWithdrawableAmount(){
 		if(accountTime<12)
 			return 0;
 		else
@@ -28,4 +27,15 @@ public class SavingAccount extends BankAccount{
 		if(accountTime<=12)
 			setBalance(getBalance()*Math.pow((1+interestMonth),time));	
 	}
+	@Override
+	public double EstimateValue(int month) {
+		passTime(6);
+		// TODO Auto-generated method stub
+		return getBalance();
+	}
+	public String toString(){
+		return String.format("SavingAccount_Balance : %.2f",getBalance());
+	}
+	
+	
 }

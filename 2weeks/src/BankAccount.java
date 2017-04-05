@@ -1,13 +1,13 @@
-public abstract class BankAccount{
+public abstract class BankAccount implements Valuable{
 	private double balance;
 	public BankAccount(double money){
 		balance=money;
 	}
-	public abstract double getWithdrawableAccount();
 	public  void setBalance(double m){
 		balance=m;
 	}
-	public void debit(double x){}
+	public abstract double getWithdrawableAmount();
+	public abstract void debit(double x);
 	public abstract void passTime(int x);
 	public double getBalance(){
 		return balance;
