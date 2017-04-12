@@ -8,8 +8,8 @@ public class Car implements Valuable {
 	}
 	@Override
 	public double EstimateValue(int month) {
-		this.price= this.price * month *0.99;
 		// TODO Auto-generated method stub
+		this.price= this.price * month *0.99;
 		return price;
 	}
 	public String toString(){
